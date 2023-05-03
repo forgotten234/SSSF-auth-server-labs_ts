@@ -35,6 +35,7 @@ const login = async (
       user_name: user.user_name,
       email: user.email,
       id: user._id,
+      role: user.role
     };
 
     const message: LoginMessageResponse = {

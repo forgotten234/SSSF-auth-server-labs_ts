@@ -9,6 +9,14 @@ const userModel = new mongoose.Schema<User>({
     type: String,
     required: true,
   },
+  first_name: {
+    type: String,
+    default: '',
+  },
+  second_name: {
+    type: String,
+    default: '',
+  },
   email: {
     type: String,
     required: true,

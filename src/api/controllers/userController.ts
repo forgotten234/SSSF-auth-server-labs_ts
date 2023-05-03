@@ -62,9 +62,12 @@ const userPost = async (
     const response: DBMessageResponse = {
       message: 'user created',
       user: {
+        first_name: newUser.first_name,
+        second_name: newUser.second_name,
         user_name: newUser.user_name,
         email: newUser.email,
         id: newUser._id,
+        role: newUser.role
       },
     };
     res.json(response);
@@ -100,9 +103,12 @@ const userPut = async (
     const response: DBMessageResponse = {
       message: 'user updated',
       user: {
+        first_name: result.first_name,
+        second_name: result.second_name,
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        role: result.role
       },
     };
     res.json(response);
@@ -158,7 +164,8 @@ const userPutAsAdmin = async (
       .findByIdAndUpdate(user.id, user, {
         new: true,
       })
-      .select('-password -role');
+      .select('-password');
+    console.log(result)
 
     if (!result) {
       next(new CustomError('User not found', 404));
@@ -171,6 +178,7 @@ const userPutAsAdmin = async (
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        role: result.role
       },
     };
     res.json(response);
