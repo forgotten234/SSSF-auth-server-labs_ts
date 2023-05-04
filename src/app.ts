@@ -8,7 +8,7 @@ import {notFound, errorHandler} from './middlewares';
 import api from './api';
 import MessageResponse from './interfaces/MessageResponse';
 
-const app = express();
+const app = express(); 
 
 app.use(morgan('dev'));
 app.use(helmet());
